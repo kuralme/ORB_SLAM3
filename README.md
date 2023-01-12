@@ -1,5 +1,15 @@
 # ORB-SLAM3
 
+### My branch with some additions
+
+Tested on Ubuntu 20.04. Some major changes:
+- Stable tag of Pangolin added to Thirdparty
+- Kitti odometry dataset(03) added and .yaml modified to run
+- Evaluation python scripts modified - not working as intended
+- Some bash scripts added to ease of use 
+
+See comparison for further details.
+
 ### V1.0, December 22th, 2021
 **Authors:** Carlos Campos, Richard Elvira, Juan J. Gómez Rodríguez, [José M. M. Montiel](http://webdiis.unizar.es/~josemari/), [Juan D. Tardos](http://webdiis.unizar.es/~jdtardos/).
 
