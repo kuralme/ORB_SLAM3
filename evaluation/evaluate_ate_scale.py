@@ -59,7 +59,6 @@ def align(model,data):
     trans_error -- translational error per point (1xn)
     """
 
-
     numpy.set_printoptions(precision=3,suppress=True)
     model_zerocentered = model - model.mean(1)
     data_zerocentered = data - data.mean(1)
@@ -111,13 +110,13 @@ def plot_traj(ax,stamps,traj,style,color,label):
     label -- plot legend
     
     """
-    stamps.sort()
-    interval = numpy.median([s-t for s,t in zip(stamps[1:],stamps[:-1])])
+    sorted(stamps)
+    interval = numpy.median([s-t for s,t in zip(list(stamps)[1:],list(stamps)[:-1])])
     x = []
     y = []
-    last = stamps[0]
+    last = list(stamps)[0]
     for i in range(len(stamps)):
-        if stamps[i]-last < 2*interval:
+        if list(stamps)[i]-last < 2*interval:
             x.append(traj[i][0])
             y.append(traj[i][1])
         elif len(x)>0:
@@ -125,7 +124,7 @@ def plot_traj(ax,stamps,traj,style,color,label):
             label=""
             x=[]
             y=[]
-        last= stamps[i]
+        last= list(stamps)[i]
     if len(x)>0:
         ax.plot(x,y,style,color=color,label=label)
             
@@ -165,42 +164,38 @@ if __name__=="__main__":
     second_xyz_notscaled = rot * second_xyz + trans
     second_xyz_notscaled_full = rot * second_xyz_full + trans
     first_stamps = first_list.keys()
-    first_stamps.sort()
+    sorted(first_stamps)
     first_xyz_full = numpy.matrix([[float(value) for value in first_list[b][0:3]] for b in first_stamps]).transpose()
     
     second_stamps = second_list.keys()
-    second_stamps.sort()
+    sorted(second_stamps)
     second_xyz_full = numpy.matrix([[float(value)*float(args.scale) for value in second_list[b][0:3]] for b in second_stamps]).transpose()
     second_xyz_full_aligned = scale * rot * second_xyz_full + trans
     
     if args.verbose:
-        print "compared_pose_pairs %d pairs"%(len(trans_error))
-
-        print "absolute_translational_error.rmse %f m"%numpy.sqrt(numpy.dot(trans_error,trans_error) / len(trans_error))
-        print "absolute_translational_error.mean %f m"%numpy.mean(trans_error)
-        print "absolute_translational_error.median %f m"%numpy.median(trans_error)
-        print "absolute_translational_error.std %f m"%numpy.std(trans_error)
-        print "absolute_translational_error.min %f m"%numpy.min(trans_error)
-        print "absolute_translational_error.max %f m"%numpy.max(trans_error)
-        print "max idx: %i" %numpy.argmax(trans_error)
+        print(f"compared_pose_pairs {len(trans_error)} pairs")
+        print(f"absolute_translational_error.rmse {numpy.sqrt(numpy.dot(trans_error,trans_error) / len(trans_error))} m")
+        print(f"absolute_translational_error.mean {numpy.mean(trans_error)} m")
+        print(f"absolute_translational_error.median {numpy.median(trans_error)} m")
+        print(f"absolute_translational_error.std {numpy.std(trans_error)} m")
+        print(f"absolute_translational_error.min {numpy.min(trans_error)} m")
+        print(f"absolute_translational_error.max {numpy.max(trans_error)} m")
+        print(f"max idx: {numpy.argmax(trans_error)} m")
     else:
-        # print "%f, %f " % (numpy.sqrt(numpy.dot(trans_error,trans_error) / len(trans_error)),  scale)
-        # print "%f,%f" % (numpy.sqrt(numpy.dot(trans_error,trans_error) / len(trans_error)),  scale)
-        print "%f,%f,%f" % (numpy.sqrt(numpy.dot(trans_error,trans_error) / len(trans_error)), scale, numpy.sqrt(numpy.dot(trans_errorGT,trans_errorGT) / len(trans_errorGT)))
-        # print "%f" % len(trans_error)
+        print((numpy.sqrt(numpy.dot(trans_error,trans_error) / len(trans_error)), scale, numpy.sqrt(numpy.dot(trans_errorGT,trans_errorGT) / len(trans_errorGT))))
     if args.verbose2:
-        print "compared_pose_pairs %d pairs"%(len(trans_error))
-        print "absolute_translational_error.rmse %f m"%numpy.sqrt(numpy.dot(trans_error,trans_error) / len(trans_error))
-        print "absolute_translational_errorGT.rmse %f m"%numpy.sqrt(numpy.dot(trans_errorGT,trans_errorGT) / len(trans_errorGT))
+        print(f"compared_pose_pairs {len(trans_error)} pairs")
+        print(f"absolute_translational_error.rmse {numpy.sqrt(numpy.dot(trans_error,trans_error) / len(trans_error))} m")
+        print(f"absolute_translational_errorGT.rmse {numpy.sqrt(numpy.dot(trans_errorGT,trans_errorGT) / len(trans_errorGT))} m")
 
     if args.save_associations:
         file = open(args.save_associations,"w")
-        file.write("\n".join(["%f %f %f %f %f %f %f %f"%(a,x1,y1,z1,b,x2,y2,z2) for (a,b),(x1,y1,z1),(x2,y2,z2) in zip(matches,first_xyz.transpose().A,second_xyz_aligned.transpose().A)]))
+        file.write("\n".join([(a,x1,y1,z1,b,x2,y2,z2) for (a,b),(x1,y1,z1),(x2,y2,z2) in zip(matches,first_xyz.transpose().A,second_xyz_aligned.transpose().A)]))
         file.close()
         
     if args.save:
         file = open(args.save,"w")
-        file.write("\n".join(["%f "%stamp+" ".join(["%f"%d for d in line]) for stamp,line in zip(second_stamps,second_xyz_notscaled_full.transpose().A)]))
+        file.write("\n".join([stamp+" ".join([d for d in line]) for stamp,line in zip(second_stamps,second_xyz_notscaled_full.transpose().A)]))
         file.close()
 
     if args.plot:
@@ -217,9 +212,7 @@ if __name__=="__main__":
         for (a,b),(x1,y1,z1),(x2,y2,z2) in zip(matches,first_xyz.transpose().A,second_xyz_aligned.transpose().A):
             ax.plot([x1,x2],[y1,y2],'-',color="red",label=label)
             label=""
-            
-        ax.legend()
-            
+        ax.legend()            
         ax.set_xlabel('x [m]')
         ax.set_ylabel('y [m]')
         plt.axis('equal')

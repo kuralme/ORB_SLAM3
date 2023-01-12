@@ -52,7 +52,7 @@ def read_file_list(filename,remove_bounds):
     
     File format:
     The file format is "stamp d1 d2 d3 ...", where stamp denotes the time stamp (to be matched)
-    and "d1 d2 d3.." is arbitary data (e.g., a 3D position and 3D orientation) associated to this timestamp. 
+    and "d1 d2 d3.." is arbitrary data (e.g., a 3D position and 3D orientation) associated to this timestamp. 
     
     Input:
     filename -- File name
@@ -70,7 +70,7 @@ def read_file_list(filename,remove_bounds):
     list = [(float(l[0]),l[1:]) for l in list if len(l)>1]
     return dict(list)
 
-def associate(first_list, second_list,offset,max_difference):
+def associate(first_list, second_list, offset,max_difference):
     """
     Associate two dictionaries of (stamp,data). As the time stamps never match exactly, we aim 
     to find the closest match for every input tuple.
@@ -87,16 +87,13 @@ def associate(first_list, second_list,offset,max_difference):
     """
     first_keys = first_list.keys()
     second_keys = second_list.keys()
-    potential_matches = [(abs(a - (b + offset)), a, b) 
-                         for a in first_keys 
-                         for b in second_keys 
-                         if abs(a - (b + offset)) < max_difference]
+    potential_matches = [(abs(a - (b + offset)), a, b) for a in first_keys for b in second_keys if abs(a - (b + offset)) < max_difference]
     potential_matches.sort()
     matches = []
     for diff, a, b in potential_matches:
         if a in first_keys and b in second_keys:
-            first_keys.remove(a)
-            second_keys.remove(b)
+            first_keys = [ele for ele in first_keys if ele != a]
+            second_keys = [ele for ele in second_keys if ele != b]
             matches.append((a, b))
     
     matches.sort()
