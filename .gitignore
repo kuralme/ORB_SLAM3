@@ -80,7 +80,6 @@ TrackingTimeStats.txt
 Table_Euroc
 Table_TUMVI_rooms/
 *.pyc
-*.osa
 .idea/
 my_settings.txt
 
