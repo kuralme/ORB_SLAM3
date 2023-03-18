@@ -2,13 +2,19 @@
 
 ### My branch with some additions
 
-Tested on Ubuntu 20.04. Some major changes:
+Build tested on Ubuntu 20.04. Some major changes:
 - Stable tag of Pangolin added to Thirdparty
-- Kitti odometry dataset(03) added and .yaml modified to run
+- Kitti odometry dataset(03) is included and relevant .yaml modified to simulate it correctly
 - Evaluation python scripts modified - not working as intended
-- Some bash scripts added to ease of use 
+- Some bash scripts added for ease of use 
 
 See comparison for further details.
+
+### TODOs ###
+
+- [ ] Edit python scripts for correct trajectory evalutaion
+- [ ] Test it for real camera and create scripts
+
 
 ### V1.0, December 22th, 2021
 **Authors:** Carlos Campos, Richard Elvira, Juan J. Gómez Rodríguez, [José M. M. Montiel](http://webdiis.unizar.es/~josemari/), [Juan D. Tardos](http://webdiis.unizar.es/~jdtardos/).

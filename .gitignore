@@ -57,6 +57,9 @@ Examples/Calibration/recorder_realsense_D435i
 Examples/Tests/viewer_dataset
 Examples/Tests/sophus_test
 
+evaluation/est_trajectories/*
+Datasets/EuRoC
+Datasets/Final_Exam_Q1
 
 Thirdparty/DBoW2/build/
 Thirdparty/DBoW2/lib/
@@ -86,3 +89,4 @@ my_settings.txt
 borrar/*
 
 */ExecMean.txt
+LfD/
