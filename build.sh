@@ -34,7 +34,6 @@ cmake .. -DCMAKE_BUILD_TYPE=Release
 make -j4
 
 
-
 cd ../../../Vocabulary
 echo "Uncompress vocabulary ..."
 tar -xf ORBvoc.txt.tar.gz

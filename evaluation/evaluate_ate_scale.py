@@ -182,6 +182,7 @@ if __name__=="__main__":
         print(f"absolute_translational_error.max {numpy.max(trans_error)} m")
         print(f"max idx: {numpy.argmax(trans_error)} m")
     else:
+        print( " Translation Error RMS, Scale, Ground Truth RMS")
         print((numpy.sqrt(numpy.dot(trans_error,trans_error) / len(trans_error)), scale, numpy.sqrt(numpy.dot(trans_errorGT,trans_errorGT) / len(trans_errorGT))))
     if args.verbose2:
         print(f"compared_pose_pairs {len(trans_error)} pairs")

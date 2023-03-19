@@ -1,4 +1,4 @@
-echo "Removing all ORB_SLAM3 objects"
+echo "Removing all ORB_SLAM3 CXX executables"
 rm -rf build lib
 rm  Examples/RGB-D/rgbd_tum \
     Examples/RGB-D/rgbd_realsense_D435i \
@@ -26,7 +26,6 @@ echo "Cleaning ROS ..."
 rm -rf Examples/ROS/ORB_SLAM3/build
 rm  Examples/ROS/ORB_SLAM3/Mono \
     Examples/ROS/ORB_SLAM3/Mono_Inertial \
-    Examples/ROS/ORB_SLAM3/MonoAR \
     Examples/ROS/ORB_SLAM3/RGBD \
     Examples/ROS/ORB_SLAM3/Stereo \
     Examples/ROS/ORB_SLAM3/Stereo_Inertial
@@ -41,5 +40,7 @@ rm -rf Thirdparty/DBoW2/build \
     Examples/Tests/viewer_dataset \
     Examples/Tests/sophus_test
 
-echo "Deleting vocabulary ..."
+echo "Deleting extracted vocabulary ..."
 rm Vocabulary/ORBvoc.txt
+
+echo "Done !!"
