@@ -75,13 +75,17 @@ Tested with ROS Noetic under Ubuntu 20.04.
 bash build_ros.sh
 ```
 
-**Running ROS example:** 
-Download raw data and [prepare](https://pages.github.com/) the rosbag. Kitti example:
+**Running ROS example:**
 
-  In the first terminal:  ```roscore  ```
+Download raw data and [prepare](https://pages.github.com/) the rosbag. Execution example on Kitti bag is given below.
 
-  Second:
+  In seperate terminals run:  
+  ```
+  roscore
+  ```
   ```
   rosbag play --pause kitti_2011_10_03_drive_0027_synced.bag /kitti/camera_color_left/image_raw:=/camera/left/image_raw /kitti/camera_color_right/image_raw:=/camera/right/image_raw
   ```
-  Third:```rosrun ORB_SLAM3 Stereo Vocabulary/ORBvoc.txt Examples/Stereo/KITTI00-02.yaml false```
+  ```
+  rosrun ORB_SLAM3 Stereo Vocabulary/ORBvoc.txt Examples/Stereo/KITTI00-02.yaml false
+  ```
