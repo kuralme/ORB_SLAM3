@@ -1,7 +1,8 @@
 # ORB-SLAM3-Fixed
 
 ***A fork of the original [repo](https://github.com/UZ-SLAMLab/ORB_SLAM3) with many modifications***
-Simple use, contains various fixes referring to several open issues. Build tested on Ubuntu 20.04 and ROS Noetic. 
+
+Various fixes integrated referring to open issues in the original. Simple use with the bash scripts, build tested on Ubuntu 20.04 and ROS Noetic. 
 
 Changes:
 - Stable tag of Pangolin added to Thirdparty
@@ -19,9 +20,9 @@ See comparison for further details.
 
 ### TODOs ###
 
-- [x] Test it with rosbag
-- [ ] Test it with real camera and create scripts
-- [ ] Fix python scripts for better trajectory evaluation (to remove drift)
+- [x] Tested with rosbag
+- [ ] Tested with real camera and create scripts
+- [ ] Fixed python scripts for better trajectory evaluation (to remove drift)
 
 ### Requirements ###
 
