@@ -48,7 +48,7 @@ If it fails for some reason, you can also use `clean.sh` script to delete all th
 
 ### Running ORB-SLAM3
 
-Kitti dataset sequence 3 is included, chosen (due to small size) and added to the `Datasets` path.
+Kitti dataset sequence 3 is included, chosen due to small size, and added into the `Datasets` path. Several run scripts added with the `run_scripts` folder.
 
 To run the simulation:
   ```
@@ -65,8 +65,6 @@ The scripts also execute trajectory evaluation. The result is extracted into the
 
 Tested with ROS Noetic under Ubuntu 20.04.
 
-*To solve rospkg import error [issue](https://github.com/UZ-SLAMLab/ORB_SLAM3/issues/614#issuecomment-1204903859), install python-is-python3
-
  Add ROS package to path
   ```
   echo "export ROS_PACKAGE_PATH=${ROS_PACKAGE_PATH}:/ORB_SLAM3/Examples/ROS" >> ~/.bashrc
@@ -76,9 +74,11 @@ Tested with ROS Noetic under Ubuntu 20.04.
 bash build_ros.sh
 ```
 
+Note: To solve rospkg import error (issued [here](https://github.com/UZ-SLAMLab/ORB_SLAM3/issues/614#issuecomment-1204903859)), install python-is-python3
+
 **Running ROS example:**
 
-Download raw data and [prepare](https://pages.github.com/) the rosbag. Execution example on Kitti bag is given below.
+Download raw data and [prepare](https://pages.github.com/) the rosbag. Following example is using the bag created with the referred dataset.
 
   In seperate terminals run:  
   ```
