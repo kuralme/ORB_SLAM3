@@ -1,4 +1,4 @@
-# ORB-SLAM3-Fixed
+# ORB-SLAM3-Fix
 
 ***A fork of the original [repo](https://github.com/UZ-SLAMLab/ORB_SLAM3) with many modifications***
 
